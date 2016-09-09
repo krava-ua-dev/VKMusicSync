@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                             time += "0";
                         }
                         time += Integer.toString(seconds);
-                        ((TextView)findViewById(R.id.duration)).setText(time);
+                        ((TextView)findViewById(R.id.mp_duration)).setText(time);
                     }
                     break;
                 case AudioPlayerService.ACTION_SERVICE_STOPPING:

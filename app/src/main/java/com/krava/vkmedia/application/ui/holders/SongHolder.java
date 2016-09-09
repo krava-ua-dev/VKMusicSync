@@ -22,7 +22,7 @@ import static android.view.View.VISIBLE;
  */
 
 public class SongHolder extends RecyclerView.ViewHolder {
-    private SongListItemBinding binding;
+    private final SongListItemBinding binding;
     private boolean isRunningVisualizer = false;
 
     public SongHolder(View v) {
@@ -31,7 +31,7 @@ public class SongHolder extends RecyclerView.ViewHolder {
         this.binding = DataBindingUtil.bind(v);
     }
 
-    public void setSong(VKApiAudio song) {
+    public void setSong(final VKApiAudio song) {
         boolean pt;
         this.binding.setSong(song);
 

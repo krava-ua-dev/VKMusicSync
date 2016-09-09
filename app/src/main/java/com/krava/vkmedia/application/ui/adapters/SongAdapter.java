@@ -129,7 +129,7 @@ public class SongAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if(position < this.audios.size()){
             ((SongHolder)holder).setSong(this.audios.get(position));
             ((SongHolder)holder).setOnSongClickListener(new View.OnClickListener() {

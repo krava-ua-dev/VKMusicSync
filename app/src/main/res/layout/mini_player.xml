@@ -4,12 +4,12 @@
     <RelativeLayout android:background="#fff" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="@+id/mini_player" android:layout_alignParentBottom="true" android:layout_marginBottom="-56dp" android:clickable="true">
         <ImageButton android:layout_width="56dp" android:layout_height="56dp" android:id="@+id/song_photo" android:background="@drawable/highlight_icon" android:src="@drawable/ic_attach_audio_pause"/>
         <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/song_label"
+            android:id="@+id/mp_song_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
             android:layout_marginTop="8dp"
-            android:layout_toLeftOf="@+id/duration"
+            android:layout_toLeftOf="@+id/mp_duration"
             android:layout_toRightOf="@+id/song_photo"
             android:ellipsize="end"
             android:fadingEdge="horizontal"
@@ -18,12 +18,12 @@
             app:typeface="roboto_medium"/>
 
         <com.devspark.robototextview.widget.RobotoTextView
-            android:id="@+id/duration"
+            android:id="@+id/mp_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:textSize="12sp"
-            android:layout_alignBottom="@+id/song_label"
+            android:layout_alignBottom="@+id/mp_song_label"
             android:layout_marginRight="8dp"
             android:layout_alignParentRight="true"
             app:typeface="roboto_regular"

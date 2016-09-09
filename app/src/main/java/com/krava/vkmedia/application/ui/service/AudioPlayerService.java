@@ -268,10 +268,6 @@ public class AudioPlayerService extends Service implements MediaPlayer.OnBufferi
                     Log.e("AUDIO_SERVICE", "release player");
                 }
                 initPlayer();
-                if(proxy != null ) {
-                    proxy.stop();
-                    proxy = null;
-                }
 
                 final boolean needStream;
                 song.cachePath = DataManager.getInstance().getSongCache(song.id);
@@ -279,10 +275,17 @@ public class AudioPlayerService extends Service implements MediaPlayer.OnBufferi
                     Log.e("newTrack", "has chache");
                     needStream = false;
                     playUrl = song.cachePath;
+                    if(proxy != null ) {
+                        proxy.stop();
+                        proxy = null;
+                    }
                 }else{
                     needStream = true;
-                    proxy = new StreamProxy();
-                    proxy.init(cachedListener);
+                    if(proxy == null || !proxy.isRunning) {
+                        proxy = new StreamProxy();
+                        proxy.init(cachedListener);
+                        proxy.start();
+                    }
                 }
                 Log.e("AUDIO_SERVICE", "need_stream: " + needStream);
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -292,7 +295,6 @@ public class AudioPlayerService extends Service implements MediaPlayer.OnBufferi
                         if(needStream) {
                             playUrl = String.format("http://127.0.0.1:%d/%s",
                                     proxy.getPort(), song.url);
-                            proxy.start();
                         }
                         try {
                             player.setDataSource(playUrl);
@@ -516,9 +518,14 @@ public class AudioPlayerService extends Service implements MediaPlayer.OnBufferi
                 }
             }
         };
-        if (proxy != null) {
-            proxy.stop();
-            proxy = null;
+//        if (proxy != null) {
+//            proxy.stop();
+//            proxy = null;
+//        }
+        if (proxy == null) {
+            proxy = new StreamProxy();
+            proxy.init(cachedListener);
+            proxy.start();
         }
     }
 

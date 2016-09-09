@@ -46,6 +46,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -70,7 +71,7 @@ public class StreamProxy implements Runnable {
     private File tempFile;
     private BufferedOutputStream tempFileOutputStream;
     private AudioPlayerService.OnFileCachedListener onFileCachedListener;
-    private boolean isRunning = true;
+    public boolean isRunning = true;
     private static boolean deleteCurrent;
     private ServerSocket socket;
     private Thread thread;
@@ -238,16 +239,20 @@ public class StreamProxy implements Runnable {
 
 
         tempFileOutputStream = new BufferedOutputStream(new FileOutputStream(tempFile));
+        OutputStream outputStream = client.getOutputStream();
         try {
             byte[] buffer = httpString.toString().getBytes();
             int readBytes = -1;
             Log.d(LOG_TAG, "writing to client");
-            client.getOutputStream().write(buffer, 0, buffer.length);
+
+
+            outputStream.write(buffer, 0, buffer.length);
+
 
             // Start streaming content.
             byte[] buff = new byte[10240];
             while (isRunning && (readBytes = data.read(buff, 0, buff.length)) != -1) {
-                client.getOutputStream().write(buff, 0, readBytes);
+                outputStream.write(buff, 0, readBytes);
                 tempFileOutputStream.write(buff, 0, readBytes);
             }
             tempFileOutputStream.flush();
@@ -258,6 +263,9 @@ public class StreamProxy implements Runnable {
         } finally {
             if (data != null) {
                 data.close();
+            }
+            if(outputStream != null){
+                outputStream.close();
             }
             tempFileOutputStream.close();
             client.close();

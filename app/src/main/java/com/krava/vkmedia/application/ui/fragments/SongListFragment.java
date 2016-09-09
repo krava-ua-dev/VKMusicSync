@@ -233,7 +233,7 @@ public class SongListFragment extends Fragment {
                 ((MainActivity)getActivity()).showPlayerAnim();
             }
             View playerBar = ((MainActivity)getActivity()).playerBar;
-            ((TextView)playerBar.findViewById(R.id.song_label)).setText(song.artist + " - " + song.title);
+            ((TextView)playerBar.findViewById(R.id.mp_song_label)).setText(song.artist + " - " + song.title);
             ((RoundCornerProgressBar)playerBar.findViewById(R.id.mini_player_progress)).setSecondaryProgress(0);
             ((RoundCornerProgressBar)playerBar.findViewById(R.id.mini_player_progress)).setProgress(0);
             ((ImageButton)playerBar.findViewById(R.id.song_photo)).setImageResource(R.drawable.ic_attach_audio_pause);
