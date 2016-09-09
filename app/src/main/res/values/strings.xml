@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">VK Music</string>
+    <integer name="com_vk_sdk_AppId">4935807</integer>
+
+    <string name="label_error_login">Неправильный логин или пароль</string>
+    <string name="error_message_unknown">"Невозможно выполнить запрос.
+Попробуйте позже."</string>
+    <string name="error_message_connection_error">Невозможно установить соединение. Проверьте настройки соединения и повторите снова.</string>
+
+    <string name="tomorrow">tomorrow</string>
+    <string name="date_at">at</string>
+    <string name="date_at_1am" translatable="false">@string/date_at</string>
+    <string name="today">today</string>
+    <string name="today_at">today at</string>
+    <string name="today_cap">Today</string>
+    <string name="date_format_day_month_year" translatable="false">%1$d %2$s %3$s</string>
+    <string name="date_format_day_month" translatable="false">%1$d %2$s</string>
+    <string name="yesterday">yesterday</string>
+    <string name="yesterday_at">yesterday at</string>
+    <string name="register">Sign up</string>
+    <string name="login_with_facebook">Continue with Google</string>
+    <string name="forgot_pass_button">Forgot?</string>
+    <string name="password">Password</string>
+    <string name="mail_or_login">E-mail or login</string>
+    <string name="log_in">Log in</string>
+    <string name="auth_error">Authorization error</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_album_save">Save</string>
+    <string name="label_add_account">Add account</string>
+    <string name="label_access_denied">Access denied</string>
+    <string name="error_title_connection_error">Connection error</string>
+    <string name="label_hint_password">Password</string>
+    <string name="label_hint_text">Text</string>
+    <string name="label_global_search">Global search</string>
+    <string name="label_followers">Followers</string>
+    <string name="title_login_as">Login as</string>
+    <string name="title_error">Error</string>
+    <string name="title_chat_users">Chat users</string>
+    <string name="label_chat_kick_btn">Kick</string>
+    <string name="label_contacts">Contacts</string>
+    <string name="label_edit_profile">Profile</string>
+    <string name="label_empty_no_friends"></string>
+    <string name="label_logout">Log out</string>
+    <string name="label_notification_title_error">Error</string>
+    <string name="label_page">Page</string>
+    <string name="label_post_btn">Send</string>
+    <string name="label_profile_deleted">Profile deleted</string>
+    <string name="label_profile_last_online" translatable="false">%1$s</string>
+    <string name="label_profile_online">Online</string>
+    <string name="label_profile_last_online_f">Last online %1$s</string>
+    <string name="label_profile_last_online_m">Last online %1$s</string>
+    <string name="label_save">Save</string>
+    <string name="label_retry">Retry</string>
+    <string name="label_search">Search</string>
+    <string name="label_send">Send</string>
+    <string name="label_sending">Sending...</string>
+    <string name="label_sex">Sex</string>
+    <string name="label_vibrate">Vibrate</string>
+    <string name="label_you_are_blocked">You are blocked</string>
+    <string name="settings_ringtone">Ringtone</string>
+    <string name="settings_title_about">About</string>
+    <string name="settings_title_account_settings">Account settings</string>
+    <string name="settings_title_advanced">Advanced</string>
+    <string name="settings_title_appearance">Appearance</string>
+    <string name="settings_title_logout">Log out</string>
+    <string name="settings_title_privacy">Privacy</string>
+    <string name="label_loading">Loading...</string>
+</resources>

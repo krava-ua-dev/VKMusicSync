@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <com.krava.vkmedia.application.ui.widget.CircularSeekBar android:layout_marginLeft="48dp" android:layout_marginRight="48dp" android:layout_width="match_parent" android:layout_height="match_parent" android:id="@+id/seekbar" android:layout_centerInParent="true" app:start_angle="-245" app:end_angle="67" app:circle_x_radius="125dp" app:circle_y_radius="125dp" app:use_custom_radii="true" app:progress="0" app:max="100" app:pointer_alpha_ontouch="100" app:circle_color="#e1e3e6" app:circle_progress_color="@color/colorAccent" app:pointer_color="#00000000" app:pointer_halo_color_ontouch="@color/colorAccent" app:pointer_halo_color="#00000000"/>
+            <de.hdodenhof.circleimageview.CircleImageView android:id="@+id/album_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:padding="36dp" app:civ_border_color="#f0f2f5" app:civ_border_width="1dp" android:layout_alignBottom="@+id/seekbar" android:layout_alignTop="@+id/seekbar" android:layout_alignRight="@+id/seekbar" android:layout_alignLeft="@+id/seekbar" android:layout_centerHorizontal="true"/>
+            <com.devspark.robototextview.widget.RobotoTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4:05" android:id="@+id/duration" android:textSize="12sp" android:layout_toRightOf="@+id/play_action" android:layout_alignBottom="@+id/seekbar" android:layout_marginLeft="-16dp"/>
+            <com.devspark.robototextview.widget.RobotoTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0:05" android:id="@+id/current_duration" android:textSize="12sp" android:layout_toLeftOf="@+id/play_action" android:layout_alignBottom="@+id/seekbar" android:layout_marginRight="16dp"/>
+            <ImageView android:id="@+id/play_action" android:layout_width="48dp" android:layout_height="48dp" android:layout_centerInParent="true" android:layout_marginRight="24dp" app:srcCompat="@drawable/ic_attach_audio_play"/>
+            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:layout_alignRight="@+id/play_action" android:layout_alignBottom="@id/seekbar" android:layout_marginRight="24dp" android:layout_marginBottom="-48dp" android:clickable="true" android:background="@drawable/highlight_icon" android:scaleType="centerInside" app:srcCompat="@drawable/repeat_normal" android:id="@+id/repeat"/>
+            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:clickable="true" android:layout_alignLeft="@+id/play_action" android:layout_alignBottom="@id/seekbar" android:layout_marginLeft="24dp" android:layout_marginBottom="-48dp" android:background="@drawable/highlight_icon" android:scaleType="centerInside" app:srcCompat="@drawable/randomly_normal" android:id="@+id/shufle"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <com.devspark.robototextview.widget.RobotoTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:lines="1" android:id="@+id/title" android:layout_marginTop="80dp" android:layout_marginLeft="16dp" android:ellipsize="marquee" android:text="Song name" android:textSize="22sp" android:freezesText="true" android:focusableInTouchMode="true" android:marqueeRepeatLimit="marquee_forever" app:typeface="roboto_medium" android:textColor="@color/colorPrimaryText" android:layout_marginRight="16dp"/>
+            <com.devspark.robototextview.widget.RobotoTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/title" android:id="@+id/artist" android:text="Artist" android:textSize="18sp" android:textColor="@color/colorSecondaryText" android:layout_marginLeft="16dp" android:layout_marginRight="16dp" android:layout_marginTop="8dp"/>
+            <ImageView android:background="@drawable/highlight_icon" android:clickable="true" android:layout_width="36dp" android:layout_height="36dp" android:layout_below="@+id/artist" android:layout_above="@+id/actions" android:padding="8dp" android:layout_centerHorizontal="true" app:srcCompat="@drawable/speaker_normal"/>
+            <LinearLayout android:id="@+id/actions" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_alignParentBottom="true" android:gravity="center_horizontal" android:layout_marginBottom="60dp" android:layout_marginLeft="16dp" android:layout_marginRight="16dp">
+                <ImageView android:id="@+id/add_song" android:background="@drawable/highlight_icon" android:clickable="true" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" android:layout_marginRight="24dp" app:srcCompat="@drawable/plus"/>
+                <ImageView android:id="@+id/prev_track" android:background="@drawable/highlight_icon" android:clickable="true" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" android:layout_marginRight="24dp" app:srcCompat="@drawable/backward"/>
+                <ImageView android:id="@+id/menu_popup" android:background="@drawable/highlight_icon" android:clickable="true" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" android:layout_marginRight="24dp" app:srcCompat="@drawable/button_show_all_dots"/>
+                <ImageView android:id="@+id/next_track" android:background="@drawable/highlight_icon" android:clickable="true" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" android:layout_marginRight="24dp" app:srcCompat="@drawable/fast_forward"/>
+                <ImageView android:id="@+id/playlist" android:background="@drawable/highlight_icon" android:clickable="true" android:layout_width="36dp" android:layout_height="36dp" android:padding="8dp" app:srcCompat="@drawable/format_list_bulleted" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <ImageView android:id="@+id/back" android:layout_width="56dp" android:layout_height="56dp" android:gravity="center" android:scaleType="center" android:background="@drawable/highlight_icon" android:src="@drawable/ic_music_minimize_32dp"/>
+</FrameLayout>

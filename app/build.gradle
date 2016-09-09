@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+android {
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 24
+    buildToolsVersion "24.0.2"
+    defaultConfig {
+        applicationId "com.krava.vkmedia"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary=true
+    }
+    dataBinding {
+        enabled = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            minifyEnabled false
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(':vksdk_library')
+    compile project(':all-fmmr')
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:design:24.2.0'
+    compile 'com.android.support:percent:24.2.0'
+    compile 'com.dmitrymalkovich.android:progress-fab:1.6'
+    compile 'com.github.johnkil.android-robototextview:robototextview:2.5.0'
+    compile 'io.gresse.hugo.vumeterlibrary:vumeterlibrary:1.0.15'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    compile 'com.labo.kaji:relativepopupwindow:0.2.0'
+}

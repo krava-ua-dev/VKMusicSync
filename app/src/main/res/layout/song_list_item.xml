@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="song"
+            type="com.vk.sdk.api.model.VKApiAudio"/>
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:clickable="true"
+        android:background="@drawable/list_item_ripple">
+
+        <io.gresse.hugo.vumeterlibrary.VuMeterView
+            android:layout_width="20dp"
+            android:layout_height="24dp"
+            android:id="@+id/action_icon"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="center_vertical"
+            app:vumeter_stopSize="2dp"
+            app:vumeter_speed="5"
+            app:vumeter_blockNumber="3"
+            app:vumeter_blockSpacing="2dp"
+            app:vumeter_backgroundColor="@color/colorAccent"
+            app:vumeter_startOff="false"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="16dp">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:textColor="@color/colorPrimaryText"
+                android:ellipsize="end"
+                app:typeface="roboto_medium"
+                android:text="@{song.title}"/>
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{song.artist}"
+                app:typeface="roboto_regular"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <com.devspark.robototextview.widget.RobotoTextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:typeface="roboto_light"
+                android:textSize="12sp"
+                android:text="3:40"/>
+            <ImageView
+                android:id="@+id/download"
+                android:clickable="true"
+                android:background="@drawable/highlight_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:srcCompat="@drawable/cloud_download_gray"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

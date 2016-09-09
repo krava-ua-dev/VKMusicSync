@@ -1,0 +1,75 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PlayerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white_dark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/white_dark</item>
+    </style>
+
+    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!--buttons color-->
+        <item name="colorAccent">@color/vk_light_color</item>
+        <!--title and message color-->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--dialog background-->
+        <item name="android:windowBackground">@drawable/bg_alert_blue</item>
+    </style>
+
+    <style name="Theme.MyTransparent" parent="android:Theme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="ButtonAction">
+        <item name="android:textSize">14.0dip</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">12.0dip</item>
+        <item name="android:paddingTop">5.5dip</item>
+        <item name="android:paddingRight">12.0dip</item>
+        <item name="android:paddingBottom">7.5dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    <style name="ButtonAction.LightBlue" parent="@style/ButtonAction">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/light_blue_button</item>
+    </style>
+    <style name="EditTextStandard" parent="@android:style/Widget.EditText">
+        <item name="android:textSize">16.0dip</item>
+        <item name="android:textColor">#ff2e3033</item>
+        <item name="android:textColorHint">#ff909499</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/edit_text_standard_bg</item>
+        <item name="android:paddingLeft">0.0dip</item>
+        <item name="android:paddingTop">15.0dip</item>
+        <item name="android:paddingRight">0.0dip</item>
+        <item name="android:paddingBottom">14.0dip</item>
+        <item name="android:minHeight">56.0dip</item>
+    </style>
+    <style name="EditTextStandard.Blue" parent="@style/EditTextStandard">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">#80ffffff</item>
+        <item name="android:background">@drawable/edit_text_standard_bg_blue</item>
+        <item name="android:paddingTop">0.0dip</item>
+        <item name="android:paddingBottom">0.0dip</item>
+        <item name="android:minHeight">56.0dip</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+</resources>

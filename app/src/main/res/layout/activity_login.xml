@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.krava.vkmedia.application.ui.widget.XLinearLayout android:orientation="vertical" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/colorPrimary" android:focusable="true" android:focusableInTouchMode="true" xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:fadingEdge="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:layout_weight="1.0">
+        <com.krava.vkmedia.application.ui.widget.ConstrainedLinearLayout
+            android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/auth_root" android:paddingLeft="24dp" android:paddingRight="24dp" android:paddingBottom="16dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" weightSum="199" max_width="@dimen/registration_login_max_width">
+            <Space android:id="@+id/space1" android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="168" />
+            <TextView android:id="@+id/auth_logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32dp" android:layout_marginBottom="32dp" android:text="@string/app_name" android:textColor="#fff" android:textStyle="bold" android:textSize="40sp" android:alpha="0.9" />
+            <Space android:id="@+id/space2" android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="20" />
+            <EditText android:id="@+id/auth_login" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginBottom="8dp" android:hint="@string/mail_or_login" android:inputType="text" android:imeOptions="actionNext" style="@style/EditTextStandard.Blue" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:addStatesFromChildren="true" android:layout_width="match_parent" android:layout_height="56dp" android:baselineAligned="false" android:weightSum="1.0" style="@style/EditTextStandard.Blue">
+                <EditText android:id="@+id/auth_pass" android:background="@null" android:padding="0dp" android:layout_width="0dp" android:layout_height="match_parent" android:hint="@string/label_hint_password" android:layout_weight="1.0" android:inputType="textPassword" android:imeOptions="actionDone" style="@style/EditTextStandard.Blue" />
+
+                <TextView android:textStyle="bold" android:textSize="14dp" android:textColor="#cdffffff" android:gravity="center" android:id="@+id/auth_forgot" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="8dp" android:text="@string/forgot_pass_button" />
+            </LinearLayout>
+
+            <Button android:textSize="16dp" android:gravity="center" android:id="@+id/auth_login_btn" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:minHeight="48dp" android:text="@string/log_in" android:lines="1" style="@style/ButtonAction.LightBlue" />
+
+            <Space android:id="@+id/space3" android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="111" />
+            <View android:id="@+id/divider" android:background="#00000000" android:layout_width="match_parent" android:layout_height="0.5dp" android:layout_marginTop="8dp" android:layout_marginBottom="8dp" android:alpha="0.25" />
+            <LinearLayout android:gravity="center" android:visibility="invisible" android:id="@+id/auth_fb_btn" android:background="@drawable/highlight_white_registration" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp">
+                <TextView android:textSize="16dp" android:textStyle="bold" android:textColor="#fff" android:ellipsize="end" android:gravity="center" android:id="@+id/fb_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/login_with_facebook" android:singleLine="true" />
+            </LinearLayout>
+        </com.krava.vkmedia.application.ui.widget.ConstrainedLinearLayout>
+    </ScrollView>
+</com.krava.vkmedia.application.ui.widget.XLinearLayout>
