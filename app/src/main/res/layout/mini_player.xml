@@ -28,7 +28,7 @@
             android:layout_alignParentRight="true"
             app:typeface="roboto_regular"
             android:text="3:40"/>
-        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar android:layout_toRightOf="@+id/song_photo" android:layout_marginRight="8dp" android:id="@+id/mini_player_progress" android:layout_width="match_parent" android:layout_height="6dp" app:rcMax="100" app:rcRadius="3dp" android:layout_marginTop="8dp" app:rcProgressColor="@color/colorPrimary" app:rcSecondaryProgressColor="#c1c0c0" android:layout_alignBottom="@+id/song_photo" android:layout_marginBottom="8dp" app:rcBackgroundColor="#f0f2f5" />
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar android:layout_toRightOf="@+id/song_photo" android:layout_marginRight="8dp" android:id="@+id/mini_player_progress" android:layout_width="match_parent" android:layout_height="6dp" app:rcMax="100" app:rcRadius="3dp" app:rcProgressColor="@color/colorPrimary" app:rcSecondaryProgressColor="#c1c0c0" android:layout_alignBottom="@+id/song_photo" android:layout_marginBottom="8dp" app:rcBackgroundColor="#f0f2f5" />
     </RelativeLayout>
     <View android:id="@+id/player_shadow" android:layout_width="match_parent" android:layout_height="6dp" android:layout_above="@+id/mini_player" android:background="@drawable/shadow_bottom_panel"/>
 </merge>
