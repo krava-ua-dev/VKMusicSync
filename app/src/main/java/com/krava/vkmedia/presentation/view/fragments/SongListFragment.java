@@ -5,14 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Process;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +20,7 @@ import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.krava.vkmedia.R;
+import com.krava.vkmedia.data.audio.AudioAlbum;
 import com.krava.vkmedia.presentation.VKApplication;
 import com.krava.vkmedia.presentation.presenter.SongListPresenter;
 import com.krava.vkmedia.presentation.view.SongListView;
@@ -33,13 +30,6 @@ import com.krava.vkmedia.presentation.ui.adapters.ToolbarSpinnerAdapter;
 import com.krava.vkmedia.presentation.ui.service.AudioPlayerService;
 import com.krava.vkmedia.databinding.FragmentSongListBinding;
 import com.vk.sdk.VKAccessToken;
-import com.vk.sdk.VKScope;
-import com.vk.sdk.VKSdk;
-import com.vk.sdk.api.VKApi;
-import com.vk.sdk.api.VKError;
-import com.vk.sdk.api.VKParameters;
-import com.vk.sdk.api.VKRequest;
-import com.vk.sdk.api.VKResponse;
 import com.vk.sdk.api.model.VKApiAudio;
 import com.vk.sdk.api.model.VKList;
 
@@ -134,6 +124,7 @@ public class SongListFragment extends MvpAppCompatFragment implements SongListVi
         }else {
             if(ownerId == Integer.valueOf(VKAccessToken.currentToken().userId)) {
                 ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+                presenter.loadAlbums();
             }else {
                 ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
                 spinner.setVisibility(GONE);
@@ -166,7 +157,7 @@ public class SongListFragment extends MvpAppCompatFragment implements SongListVi
         spinner.setVisibility(View.VISIBLE);
         albumAdapter = new ToolbarSpinnerAdapter(getActivity(), spinner, android.R.layout.simple_spinner_item);
         spinner.setAdapter(albumAdapter);
-        albumAdapter.addItem(getString(R.string.my_audios));
+        albumAdapter.addItem(new AudioAlbum(-1, getString(R.string.my_audios)));
 
         spinner.setSelection(0);
     }
@@ -212,6 +203,13 @@ public class SongListFragment extends MvpAppCompatFragment implements SongListVi
     @Override
     public void addSongs(VKList<VKApiAudio> songs) {
         adapter.addAudioList(songs);
+    }
+
+    @Override
+    public void albumsLoaded(VKList<AudioAlbum> albums) {
+        for(AudioAlbum album : albums) {
+            albumAdapter.addItem(album);
+        }
     }
 
     @Override

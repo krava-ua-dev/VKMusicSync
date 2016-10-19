@@ -3,6 +3,7 @@ package com.krava.vkmedia.presentation.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.krava.vkmedia.data.audio.AudioAlbum;
 import com.krava.vkmedia.domain.DataManager;
 import com.krava.vkmedia.presentation.view.SongListView;
 import com.vk.sdk.api.VKApi;
@@ -12,6 +13,9 @@ import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
 import com.vk.sdk.api.model.VKApiAudio;
 import com.vk.sdk.api.model.VKList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Created by krava2008 on 19.10.16.
@@ -25,6 +29,7 @@ public class SongListPresenter extends MvpPresenter<SongListView> {
     private final int TYPE_POPULAR = 3;
 
     private VKRequest request;
+    private VKRequest requestAlbums;
     private int type = 0;
     private int ownerId = -1;
     private boolean isHistoryLoading = false;
@@ -75,6 +80,41 @@ public class SongListPresenter extends MvpPresenter<SongListView> {
             default:
                 return "";
         }
+    }
+
+    public void loadAlbums(){
+        if(requestAlbums != null){
+            request.cancel();
+        }
+        requestAlbums = VKApi.audio().getAlbums();
+        requestAlbums.executeWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                super.onComplete(response);
+
+                if(response.json.optJSONObject("response").has("items")) {
+                    VKList<AudioAlbum> albums = new VKList<AudioAlbum>();
+                    JSONArray albumsJson = response.json.optJSONObject("response").optJSONArray("items");
+                    for(int i = 0; i < albumsJson.length(); i++) {
+                        JSONObject albumJson = albumsJson.optJSONObject(i);
+                        albums.add(new AudioAlbum(albumJson.optInt("id"), albumJson.optString("title")));
+                    }
+
+                    if(albums.size() > 0){
+                        getViewState().albumsLoaded(albums);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(VKError error) {
+                super.onError(error);
+
+                if(error.errorCode != VKError.VK_CANCELED) {
+                    getViewState().onError();
+                }
+            }
+        });
     }
 
     private void loadUserSongs(int offset, int ownerId) {
@@ -185,8 +225,11 @@ public class SongListPresenter extends MvpPresenter<SongListView> {
     public void onDestroy() {
         super.onDestroy();
 
-        if(request != null){
+        if(request != null) {
             request.cancel();
+        }
+        if(requestAlbums != null) {
+            requestAlbums.cancel();
         }
     }
 }

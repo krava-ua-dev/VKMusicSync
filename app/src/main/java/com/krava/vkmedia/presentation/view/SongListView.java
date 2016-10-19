@@ -1,6 +1,7 @@
 package com.krava.vkmedia.presentation.view;
 
 import com.arellomobile.mvp.MvpView;
+import com.krava.vkmedia.data.audio.AudioAlbum;
 import com.vk.sdk.api.model.VKApiAudio;
 import com.vk.sdk.api.model.VKList;
 
@@ -12,5 +13,6 @@ public interface SongListView extends MvpView {
 
     void initSongList(VKList<VKApiAudio> songs);
     void addSongs(VKList<VKApiAudio> songs);
+    void albumsLoaded(VKList<AudioAlbum> albums);
     void onError();
 }

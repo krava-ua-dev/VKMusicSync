@@ -14,6 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.krava.vkmedia.R;
+import com.krava.vkmedia.data.audio.AudioAlbum;
+import com.vk.sdk.api.model.VKList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ import java.util.List;
  */
 
 public class ToolbarSpinnerAdapter extends ArrayAdapter<String> {
-    private List<String> items;
+    private VKList<AudioAlbum> items;
     private Context context;
     private Spinner spinner;
 
@@ -32,10 +34,10 @@ public class ToolbarSpinnerAdapter extends ArrayAdapter<String> {
 
         this.spinner = spinner;
         this.context = context;
-        this.items = new ArrayList<>();
+        this.items = new VKList<>();
     }
 
-    public void addItem(String item){
+    public void addItem(AudioAlbum item){
         this.items.add(item);
         notifyDataSetChanged();
     }
@@ -54,8 +56,7 @@ public class ToolbarSpinnerAdapter extends ArrayAdapter<String> {
         );
 
         row.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//        spinner.setLayoutParams(new Toolbar.LayoutParams(measureContentWidth(row, spinner.getBackground()), ViewGroup.LayoutParams.WRAP_CONTENT));
-        row.setText(items.get(position));
+        row.setText(items.get(position).getTitle());
         return row;
     }
 
@@ -84,7 +85,7 @@ public class ToolbarSpinnerAdapter extends ArrayAdapter<String> {
         TextView row = (TextView)LayoutInflater.from(context).inflate(
                 R.layout.toolbar_spinner_list_item, parent, false
         );
-        row.setText(items.get(position));
+        row.setText(items.get(position).getTitle());
         return row;
     }
 
