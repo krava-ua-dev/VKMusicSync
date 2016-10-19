@@ -65,4 +65,9 @@
     <string name="settings_title_logout">Log out</string>
     <string name="settings_title_privacy">Privacy</string>
     <string name="label_loading">Loading...</string>
+    <string name="search_hint">Search</string>
+
+    <string name="my_audios">My audios</string>
+    <string name="recommendations">Recommendations</string>
+    <string name="popular">Popular</string>
 </resources>

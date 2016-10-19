@@ -4,15 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.krava.vkmedia.application.VKApplication;
+import com.krava.vkmedia.presentation.VKApplication;
 import com.krava.vkmedia.data.model.AudioEntity;
 import com.krava.vkmedia.data.model.AudioEntityDataMapper;
 import com.vk.sdk.api.model.VKApiAudio;
 import com.vk.sdk.api.model.VKApiUser;
 import com.vk.sdk.api.model.VKList;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmResults;

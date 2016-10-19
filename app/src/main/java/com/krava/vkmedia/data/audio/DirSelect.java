@@ -4,7 +4,7 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.krava.vkmedia.application.VKApplication;
+import com.krava.vkmedia.presentation.VKApplication;
 
 import java.io.File;
 

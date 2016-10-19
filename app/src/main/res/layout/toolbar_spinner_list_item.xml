@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.devspark.robototextview.widget.RobotoTextView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:textSize="16sp" android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto" android:lines="1" android:ellipsize="end" android:maxWidth="200dp" android:textColor="@color/colorPrimaryText" android:paddingTop="8dp"
+                                                   android:paddingBottom="8dp" android:paddingLeft="16dp" android:paddingRight="16dp" app:typeface="roboto_regular" android:text="Recommendation aksdjalsdkj adskljasd aklsjd"/>

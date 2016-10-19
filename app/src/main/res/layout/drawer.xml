@@ -3,7 +3,6 @@
     android:id="@+id/left_drawer"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
     android:clickable="true"
     android:layout_gravity="start"
     android:layout_height="match_parent"
@@ -54,6 +53,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fff"
         android:layout_below="@+id/drawer_header">
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,8 +64,7 @@
                 android:layout_height="48dp"
                 android:id="@+id/my_list"
                 android:layout_marginTop="8dp"
-                android:foreground="@drawable/highlight_icon"
-                android:background="#fff">
+                android:background="@drawable/highlight_icon">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -86,9 +85,52 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:id="@+id/popular"
+                android:background="@drawable/highlight_icon">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="centerInside"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    app:srcCompat="@drawable/star"
+                    android:layout_gravity="center_vertical"/>
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="16dp"
+                    android:text="Popular"
+                    app:typeface="roboto_medium"
+                    android:textColor="@color/colorPrimaryText"
+                    android:gravity="left|center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:id="@+id/recommendation"
+                android:background="@drawable/highlight_icon">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="centerInside"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    app:srcCompat="@drawable/thumb_up"
+                    android:layout_gravity="center_vertical"/>
+                <com.devspark.robototextview.widget.RobotoTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="16dp"
+                    android:text="Recommendation"
+                    app:typeface="roboto_medium"
+                    android:textColor="@color/colorPrimaryText"
+                    android:gravity="left|center_vertical"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:id="@+id/cached"
-                android:foreground="@drawable/highlight_icon"
-                android:background="#fff">
+                android:background="@drawable/highlight_icon">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -110,8 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:id="@+id/friends"
-                android:foreground="@drawable/highlight_icon"
-                android:background="#fff">
+                android:background="@drawable/highlight_icon">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -139,8 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:id="@+id/settings"
-                android:background="#fff"
-                android:foreground="@drawable/highlight_icon">
+                android:background="@drawable/highlight_icon">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -162,8 +202,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:id="@+id/feedback"
-                android:foreground="@drawable/highlight_icon"
-                android:background="#fff">
+                android:background="@drawable/highlight_icon">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -185,8 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:id="@+id/logout"
-                android:foreground="@drawable/highlight_icon"
-                android:background="#fff">
+                android:background="@drawable/highlight_icon">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"

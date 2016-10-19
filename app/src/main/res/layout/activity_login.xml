@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.krava.vkmedia.application.ui.widget.XLinearLayout android:orientation="vertical" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/colorPrimary" android:focusable="true" android:focusableInTouchMode="true" xmlns:android="http://schemas.android.com/apk/res/android">
+<com.krava.vkmedia.presentation.ui.widget.XLinearLayout android:orientation="vertical" android:id="@+id/root" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/colorPrimary" android:focusable="true" android:focusableInTouchMode="true" xmlns:android="http://schemas.android.com/apk/res/android">
     <ScrollView android:fadingEdge="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:layout_weight="1.0">
-        <com.krava.vkmedia.application.ui.widget.ConstrainedLinearLayout
+        <com.krava.vkmedia.presentation.ui.widget.ConstrainedLinearLayout
             android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@+id/auth_root" android:paddingLeft="24dp" android:paddingRight="24dp" android:paddingBottom="16dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content" weightSum="199" max_width="@dimen/registration_login_max_width">
             <Space android:id="@+id/space1" android:layout_width="0dp" android:layout_height="0dp" android:layout_weight="168" />
             <TextView android:id="@+id/auth_logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32dp" android:layout_marginBottom="32dp" android:text="@string/app_name" android:textColor="#fff" android:textStyle="bold" android:textSize="40sp" android:alpha="0.9" />
@@ -20,6 +20,6 @@
             <LinearLayout android:gravity="center" android:visibility="invisible" android:id="@+id/auth_fb_btn" android:background="@drawable/highlight_white_registration" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp">
                 <TextView android:textSize="16dp" android:textStyle="bold" android:textColor="#fff" android:ellipsize="end" android:gravity="center" android:id="@+id/fb_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/login_with_facebook" android:singleLine="true" />
             </LinearLayout>
-        </com.krava.vkmedia.application.ui.widget.ConstrainedLinearLayout>
+        </com.krava.vkmedia.presentation.ui.widget.ConstrainedLinearLayout>
     </ScrollView>
-</com.krava.vkmedia.application.ui.widget.XLinearLayout>
+</com.krava.vkmedia.presentation.ui.widget.XLinearLayout>

@@ -1,13 +1,10 @@
 package com.krava.vkmedia.data.audio;
 
 import android.content.Context;
-import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.krava.vkmedia.application.VKApplication;
+import com.krava.vkmedia.presentation.VKApplication;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;

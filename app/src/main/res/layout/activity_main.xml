@@ -13,15 +13,24 @@
             android:id="@+id/activity_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.krava.vkmedia.application.ui.activity.MainActivity">
+            tools:context=".presentation.view.activity.MainActivity">
 
-            <FrameLayout android:id="@+id/fragment_wrapper" android:layout_width="match_parent" android:layout_height="match_parent" android:background="#fff" android:layout_above="@+id/mini_player" android:layout_below="@+id/toolbar"/>
+            <FrameLayout android:id="@+id/fragment_wrapper" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@+id/toolbar"/>
             <com.dmitrymalkovich.android.ProgressFloatingActionButton android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16dp" android:layout_marginBottom="16dp" android:id="@+id/downloads_fab" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:clickable="true">
                 <android.support.design.widget.FloatingActionButton android:layout_width="wrap_content" android:layout_height="wrap_content" app:fabSize="normal" app:elevation="4dp" app:srcCompat="@drawable/cloud_download_white" />
                 <ProgressBar android:id="@+id/fab_progress" style="?android:attr/progressBarStyleHorizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="false" android:progress="50" android:progressDrawable="@drawable/circle_progress" android:secondaryProgress="100"/>
             </com.dmitrymalkovich.android.ProgressFloatingActionButton>
             <include layout="@layout/mini_player"/>
-            <android.support.v7.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" android:background="@color/colorPrimary" android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            <android.support.v7.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" android:background="@color/colorPrimary" android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                <android.support.v7.widget.AppCompatSpinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:id="@+id/album_spinner"
+                    android:spinnerMode="dropdown"
+                    android:dropDownWidth="wrap_content"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            </android.support.v7.widget.Toolbar>
             <View android:layout_width="match_parent" android:layout_height="6dp" android:layout_below="@+id/toolbar" android:background="@drawable/shadow_actionbar_light"/>
         </RelativeLayout>
         <include layout="@layout/drawer"/>
