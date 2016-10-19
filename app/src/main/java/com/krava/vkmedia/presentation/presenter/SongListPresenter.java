@@ -19,10 +19,10 @@ import com.vk.sdk.api.model.VKList;
 
 @InjectViewState
 public class SongListPresenter extends MvpPresenter<SongListView> {
-    public static final int TYPE_MY_LIST = 0;
-    public static final int TYPE_CACHED = 1;
-    public static final int TYPE_RECOMMENDATION = 2;
-    public static final int TYPE_POPULAR = 3;
+    private final int TYPE_MY_LIST = 0;
+    private final int TYPE_CACHED = 1;
+    private final int TYPE_RECOMMENDATION = 2;
+    private final int TYPE_POPULAR = 3;
 
     private VKRequest request;
     private int type = 0;
@@ -64,6 +64,19 @@ public class SongListPresenter extends MvpPresenter<SongListView> {
         }
     }
 
+    public String getToolbarTitle(){
+        switch (type){
+            case TYPE_CACHED:
+                return "Cached";
+            case TYPE_POPULAR:
+                return "Popular";
+            case TYPE_RECOMMENDATION:
+                return "Recommendation";
+            default:
+                return "";
+        }
+    }
+
     private void loadUserSongs(int offset, int ownerId) {
         if(isHistoryLoading) return;
 
@@ -93,7 +106,9 @@ public class SongListPresenter extends MvpPresenter<SongListView> {
                 super.onError(error);
                 isHistoryLoading = false;
 
-                getViewState().onError();
+                if(error.errorCode != VKError.VK_CANCELED) {
+                    getViewState().onError();
+                }
             }
         });
     }
@@ -127,7 +142,9 @@ public class SongListPresenter extends MvpPresenter<SongListView> {
                 super.onError(error);
                 isHistoryLoading = false;
 
-                getViewState().onError();
+                if(error.errorCode != VKError.VK_CANCELED) {
+                    getViewState().onError();
+                }
             }
         });
     }
@@ -157,8 +174,19 @@ public class SongListPresenter extends MvpPresenter<SongListView> {
                 super.onError(error);
                 isHistoryLoading = false;
 
-                getViewState().onError();
+                if(error.errorCode != VKError.VK_CANCELED) {
+                    getViewState().onError();
+                }
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if(request != null){
+            request.cancel();
+        }
     }
 }

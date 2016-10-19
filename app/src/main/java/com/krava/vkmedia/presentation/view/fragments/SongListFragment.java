@@ -33,6 +33,8 @@ import com.krava.vkmedia.presentation.ui.adapters.ToolbarSpinnerAdapter;
 import com.krava.vkmedia.presentation.ui.service.AudioPlayerService;
 import com.krava.vkmedia.databinding.FragmentSongListBinding;
 import com.vk.sdk.VKAccessToken;
+import com.vk.sdk.VKScope;
+import com.vk.sdk.VKSdk;
 import com.vk.sdk.api.VKApi;
 import com.vk.sdk.api.VKError;
 import com.vk.sdk.api.VKParameters;
@@ -127,10 +129,18 @@ public class SongListFragment extends MvpAppCompatFragment implements SongListVi
         });
         if(!presenter.isTypeMyList()) {
             ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
-            ((MainActivity)getActivity()).getSupportActionBar().setTitle("Cached");
+            ((MainActivity)getActivity()).getSupportActionBar().setTitle(presenter.getToolbarTitle());
             spinner.setVisibility(GONE);
         }else {
-            ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+            if(ownerId == Integer.valueOf(VKAccessToken.currentToken().userId)) {
+                ((MainActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+            }else {
+                ((MainActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(true);
+                spinner.setVisibility(GONE);
+                if(bundle != null) {
+                    ((MainActivity)getActivity()).getSupportActionBar().setTitle(bundle.getString("owner_name", ""));
+                }
+            }
         }
         presenter.getSongList(0);
 

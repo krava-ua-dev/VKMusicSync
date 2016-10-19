@@ -43,9 +43,7 @@ public class FriendsFragment extends Fragment {
         ((MainActivity)getActivity()).getSupportActionBar().setTitle("Friends");
 
         binding.list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        adapter = new FriendsAdapter(userId -> {
-            ((MainActivity)getActivity()).showSongListFragment(userId);
-        });
+        adapter = new FriendsAdapter(user -> ((MainActivity)getActivity()).showSongListFragment(user));
         binding.list.setAdapter(adapter);
         binding.list.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -65,6 +63,8 @@ public class FriendsFragment extends Fragment {
     }
 
     private void getFriendsWithSongs(){
+        if(isLoadingHistory) return;
+
         if(firstRequest != null){
             firstRequest.cancel();
         }
@@ -97,6 +97,6 @@ public class FriendsFragment extends Fragment {
     }
 
     public interface OnUserClickListener {
-        void onUserClick(int userId);
+        void onUserClick(VKApiUser user);
     }
 }

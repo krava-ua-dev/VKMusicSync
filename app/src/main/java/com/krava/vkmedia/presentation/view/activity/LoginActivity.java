@@ -12,7 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.krava.vkmedia.R;
+import com.krava.vkmedia.presentation.presenter.LoginPresenter;
+import com.krava.vkmedia.presentation.view.LoginView;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKSdk;
@@ -22,7 +26,10 @@ import com.vk.sdk.api.VKError;
  * Created by krava2008 on 13.06.16.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends MvpAppCompatActivity implements LoginView {
+    @InjectPresenter
+    LoginPresenter presenter;
+
     public static final int CUSTOM_LOGIN_CODE = 1602;
     private ProgressDialog progress;
     private EditText authPass;
@@ -32,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(VKSdk.isLoggedIn()){
-            startTabsActivity();
+            startMainActivity();
         }
         setContentView(R.layout.activity_login);
 
@@ -44,17 +51,14 @@ public class LoginActivity extends AppCompatActivity {
         this.progress.setMessage(getString(R.string.label_loading));
         this.progress.setCancelable(false);
 
-        findViewById(R.id.auth_login_btn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkInternetConnection(LoginActivity.this)) {
-                    doCustomLogin(
-                            authPass.getText().toString(),
-                            authLogin.getText().toString()
-                    );
-                }else{
-                    showAlert(R.string.error_title_connection_error, R.string.error_message_connection_error);
-                }
+        findViewById(R.id.auth_login_btn).setOnClickListener(v -> {
+            if(checkInternetConnection(LoginActivity.this)) {
+                doCustomLogin(
+                        authPass.getText().toString(),
+                        authLogin.getText().toString()
+                );
+            }else{
+                showAlert(R.string.error_title_connection_error, R.string.error_message_connection_error);
             }
         });
     }
@@ -80,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         VKCallback<VKAccessToken> callback = new VKCallback<VKAccessToken>() {
             @Override
             public void onResult(VKAccessToken res) {
-                startTabsActivity();
+                startMainActivity();
             }
 
             @Override
@@ -91,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         if(requestCode == CUSTOM_LOGIN_CODE){
             this.progress.dismiss();
             if(resultCode == RESULT_OK){
-                startTabsActivity();
+                startMainActivity();
             }else if(resultCode == RESULT_CANCELED){
                 showAlert(R.string.auth_error, R.string.label_error_login);
             }
@@ -100,10 +104,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void startTabsActivity(){
-        Intent tabActivity = new Intent(this, MainActivity.class);
-        tabActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(tabActivity);
+    public void startMainActivity(){
+        Intent mainActivity = new Intent(this, MainActivity.class);
+        mainActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(mainActivity);
         finish();
     }
 
@@ -113,11 +117,8 @@ public class LoginActivity extends AppCompatActivity {
         builder.setMessage(getString(messege));
         String positiveText = getString(android.R.string.ok);
         builder.setPositiveButton(positiveText,
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // positive button logic
-                    }
+                (dialog, which) -> {
+                    // positive button logic
                 });
         AlertDialog dialog = builder.create();
         dialog.show();

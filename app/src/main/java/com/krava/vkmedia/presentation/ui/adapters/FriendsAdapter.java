@@ -1,5 +1,6 @@
 package com.krava.vkmedia.presentation.ui.adapters;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,20 +40,21 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendVi
         return new FriendViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.friends_list_item, parent, false));
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(FriendViewHolder holder, int position) {
         VKApiUser user = users.get(position);
 
-        if(user.songsCount == 0){
+        if(user.songsCount == 0) {
             holder.root.setEnabled(false);
-        }else{
+        }else {
             holder.root.setEnabled(true);
-            holder.root.setOnClickListener(v -> {
-                onUserClick.onUserClick(user.id);
-            });
+            holder.root.setOnClickListener(v -> onUserClick.onUserClick(user));
         }
         holder.name.setText(user.toString());
-        holder.songCount.setText(String.format("audios: %d", user.songsCount));
+        holder.songCount.setText(user.songsCount == 0 ?
+                "audios: -- " :
+                String.format("audios: %d", user.songsCount));
         Picasso.with(holder.avatar.getContext())
                 .load(user.photo_100)
                 .placeholder(R.drawable.placeholder_user_48dp)

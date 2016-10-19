@@ -142,6 +142,8 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         this.translatedViews = getTranslatedView();
         presenter.loadMyself();
 
+        getWindow().setBackgroundDrawableResource(R.color.white);
+
         if(getSupportFragmentManager().findFragmentByTag("my_list") == null) {
             SongListFragment songsFragment = new SongListFragment();
             Bundle extras = new Bundle();
@@ -336,10 +338,11 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         return true;
     }
 
-    public void showSongListFragment(int ownerId){
+    public void showSongListFragment(VKApiUser owner){
         SongListFragment songsFragment = new SongListFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("owner_id", ownerId);
+        bundle.putInt("owner_id", owner.id);
+        bundle.putString("owner_name", owner.toString());
         songsFragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction()
